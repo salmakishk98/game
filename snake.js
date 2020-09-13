@@ -1,5 +1,6 @@
 // draw the background
 const canv = document.getElementById('snake_canvas');
+console.log(canv);
 const game_window = canv.getContext("2d");
 
 // creat parameter box the size of block
@@ -53,18 +54,18 @@ snake[0]=
 let d ;
 function control(e)
 {
-   if (e.keyCode==38 )
+   if (e.keyCode==38 && d!="down" )
      {d = 'up';
      up.play();} 
-   else if (e.keyCode==37 )
+   else if (e.keyCode==37 && d!="right" )
       {d = 'left';
        left.play();}
-   else if (e.keyCode==39)
+   else if (e.keyCode==39 && d!="left")
      {
         d = 'right';
         right.play();
      } 
-   else if (e.keyCode==40)
+   else if (e.keyCode==40 && d!="up")
       {
         d = 'down'; 
         down.play();
@@ -81,10 +82,18 @@ function collision_snake (newhead,snake)
     return false;
 }
 
-// function to draw every element 
+var speed = 500;
 function draw ()
 {
-    
+  console.log(speed);
+  clearInterval(game);
+  game = setInterval(draw,speed)
+  // add range 
+  const slider = document.getElementById("myRange");
+ slider.oninput = function ()
+ {
+ speed = 600-slider.value ; // string
+ }
    // draw background 
     game_window.drawImage(img,0,0);
    // draw food
@@ -148,6 +157,5 @@ snake.unshift(newhead);
 game_window.fillStyle="yellow";
 game_window.font = " 40px Changa one";
 game_window.fillText(score,2*box,1.6*box);
-
 }
-let game = setInterval(draw,100);
+let game = setInterval(draw,speed);

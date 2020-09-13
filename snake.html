@@ -2,12 +2,33 @@
 <html>
     <head>
         <title> Snake Game </title>
+        <style>
+            #myRange{
+                margin-left: 100px;
+                width: 100%;
+                -webkit-appearance: none;
+                height: 6px;
+                outline: none;
+                border-radius: 3px;
+                background: linear-gradient(90deg, rgb(22, 172, 22) 60% ,rgb(194, 10, 10) 60%);
+                opacity: 0.9;
+            }
+            #speed_range{
+                position: fixed;
+                top: 35px;
+                
+            }
+        </style>
     </head>
     <body style="background-color: darkgreen;">
         <canvas id="snake_canvas" width="608" height="608" ></canvas>
-        <script src="snake.js"></script>
         <img src="img/snake.png" style="position: fixed; right: 200px; width: 300px; height: 300px; top: 90px;">;
         <h1 style="position: fixed; right: 250px; top: 400px; color:blanchedalmond;"> Snake Game </h1>
-        <h1 style="position: fixed; right: 235px; top: 440px; color:yellow;"> Enjoy playing  </h1>
+        <h1 style="position: fixed; right: 235px; top: 440px; color:rgb(211, 211, 23);"> Enjoy playing  </h1>
+        <div id="speed_range" style=" width: 450px; ">
+            <input id="myRange" type="range" min="100" max="500" value="100" step="100" >
+           
+        </div>
+        <script src="snake.js"></script>
     </body>
 </html>
